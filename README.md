@@ -28,12 +28,13 @@ TODO: Fill out this long description.
 ## API
 
 ## Maintainers
-
-[@https://github.com/teemunasanen](https://github.com/https://github.com/teemunasanen)
+[@JuliusHuttunen](https://github.com/https://github.com/JuliusHuttunen)
+[@teemunasanen](https://github.com/https://github.com/teemunasanen)
 
 ## Contributing
-[@https://github.com/teemunasanen](https://github.com/https://github.com/teemunasanen)
-[@https://github.com/JuliusHuttunen](https://github.com/https://github.com/JuliusHuttunen)
+[@JuliusHuttunen](https://github.com/https://github.com/JuliusHuttunen)
+[@teemunasanen](https://github.com/https://github.com/teemunasanen)
+
 
 
 Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
