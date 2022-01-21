@@ -1,19 +1,18 @@
 {
   "name": "trivia-game",
-  "version": "1.0.0",
-  "description": "The Trivia Game - Single Page Application with Vue.js framework version 3.x - Noroff Assignment 2",
-  "main": "index.js",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/teemunasanen/trivia-game.git"
+  "dependencies": {
+    "vue": "^3.2.25",
+    "vue-router": "^3.5.3",
+    "vuex": "^3.6.2"
   },
-  "author": "Julius Huttunen & Teemu Näsänen",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/teemunasanen/trivia-game/issues"
-  },
-  "homepage": "https://github.com/teemunasanen/trivia-game#readme"
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "vite": "^2.7.2"
+  }
 }
