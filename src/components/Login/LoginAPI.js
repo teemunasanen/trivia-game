@@ -23,10 +23,10 @@ async function checkUsers(username) {
                 null
             }
         }
+        return [null, data]
     }
     catch (error) {
         return [error.message, null]
-
     }
 }
 export async function apiUserRegister(username, score) {
@@ -55,7 +55,7 @@ export async function apiUserRegister(username, score) {
         }
     }
     else {
-        console.log("That username is in use!")
+        console.log("Logged in as " + username)
         match = 0
     }
 }
