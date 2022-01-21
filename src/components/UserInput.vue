@@ -5,7 +5,7 @@ import { apiUserRegister } from './Login/LoginAPI';
 const userName = ref("")
 
 const onSubmit = async () => {
-    const [error, user] = await apiUserRegister(userName.value, "0")
+    const [error, user] = await apiUserRegister(userName.value, 0)
     console.log("ERR", error)
     console.log("USER", user)
 }
