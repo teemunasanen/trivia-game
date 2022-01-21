@@ -8,7 +8,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { apiUserRegister } from './Login/LoginAPI';
+import { apiUserRegister } from '../components/Login/LoginAPI';
 //Initialize userinput
 const userName = ref("")
 
