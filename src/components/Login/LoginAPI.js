@@ -1,8 +1,8 @@
 import { BASE_URL } from "./"
 const APIKEY = "2621021822583701864026758372887704504265983508394583234625985500"
-const users = []
+let match = 0
 
-async function getUsers() {
+async function checkUsers(username) {
     try {
         const config = {
             method: "GET",
@@ -13,8 +13,16 @@ async function getUsers() {
         }
         const response = await fetch(`${BASE_URL}`, config)
         const data = await response.json()
-        console.log(data)
-        return [null, data]
+        for (let user of data) {
+            if (user.username.toLowerCase() === username.toLowerCase()) {
+                match++
+                console.log("a match!")
+                console.log(user.username)
+            }
+            else {
+                null
+            }
+        }
     }
     catch (error) {
         return [error.message, null]
@@ -22,26 +30,32 @@ async function getUsers() {
     }
 }
 export async function apiUserRegister(username, score) {
-    getUsers()
-    try {
-        const config = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-API-KEY": APIKEY
-            },
-            body: JSON.stringify(
-                {
-                    username,
-                    score
-                }
-            )
+    await checkUsers(username)
+    if (match == 0) {
+        try {
+            const config = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-API-KEY": APIKEY
+                },
+                body: JSON.stringify(
+                    {
+                        username,
+                        score
+                    }
+                )
+            }
+            const response = await fetch(`${BASE_URL}`, config)
+            const data = await response.json()
+            return [null, data]
         }
-        const response = await fetch(`${BASE_URL}`, config)
-        const data = await response.json()
-        return [null, data]
+        catch (error) {
+            return [error.message, null]
+        }
     }
-    catch (error) {
-        return [error.message, null]
+    else {
+        console.log("That username is in use!")
+        match = 0
     }
 }
