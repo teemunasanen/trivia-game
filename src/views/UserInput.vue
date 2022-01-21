@@ -17,6 +17,14 @@
 <script setup>
 import { ref } from 'vue'
 import { apiUserRegister } from '../components/Login/LoginAPI';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goToSelect = () => {
+  router.push("/select");
+};
+
 //Initialize userinput
 const userName = ref("")
 
@@ -24,22 +32,12 @@ const onSubmit = async () => {
     const [error, user] = await apiUserRegister(userName.value, 0)
     console.log("ERR", error)
     console.log("USER", user)
+    goToSelect()
 }
 
 </script>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    background-color: #30a178;
-    height: 100%;
-    min-height: 100%;
-    max-height: 100%;
-}
+<style scoped>
 .backdrop {
     padding-top: 15em;
     display: flex;
