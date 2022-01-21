@@ -1,24 +1,26 @@
-export const LoginAPI = {
-    register(name) {
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: name
-        }
+import { BASE_URL } from "./"
+const APIKEY = "2621021822583701864026758372887704504265983508394583234625985500";
 
-        return fetch("https://noroff-trivia-game-api.herokuapp.com/trivia", requestOptions)
-        .then(response => response.json())
-        .then(data => data.data)
-    },
-    login(name) {
-        const requestOptions = {
+export async function apiUserRegister(username, score) {
+    try {
+        const config = {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: name
+            headers: {
+                "Content-Type": "application/json",
+                "X-API-KEY": APIKEY
+            },
+            body: JSON.stringify(
+                {
+                    username,
+                    score
+                }
+            )
         }
-        
-        return fetch("https://noroff-trivia-game-api.herokuapp.com/trivia", requestOptions)
-        .then(response => response.json())
-        .then(data => data.data)
+        const response = await fetch(`${BASE_URL}`, config)
+        const data = await response.json()
+        return [null, data]
+    }
+    catch (error) {
+        return [error.message, null]
     }
 }
