@@ -3,20 +3,24 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiGetQuestions, apiGetCategories } from '../components/Questions/QuestionAPI'
 
+//Initialize basic parameters and their initial values
 const amount = ref("25")
 const difficulty = ref("1")
 const category = ref("9")
+const router = useRouter()
+const questions = reactive([])
+const categories = reactive([])
 
+//Get categories from API
 const getCategories = async () => {
   const apiCategories = await apiGetCategories()
-  console.log(apiCategories)
   for (let category of apiCategories) {
     categories.push(category)
   }
 }
 
+//Get questions from API
 const getQuestions = async () => {
-  console.log(category.value, amount.value, difficulty.value)
   const apiQuestions = await apiGetQuestions(amount.value, category.value, difficulty.value)
   console.log(apiQuestions)
   for (let question of apiQuestions) {
@@ -24,13 +28,8 @@ const getQuestions = async () => {
   }
 }
 
-const router = useRouter()
-const questions = reactive([])
-const categories = reactive([])
-
 const showAPI = () => {
   console.log(questions)
-  console.log(categories)
 }
 
 const goToQuestion = async () => {
@@ -38,6 +37,7 @@ const goToQuestion = async () => {
   
 }
 
+//Run on load:
 getQuestions()
 getCategories()
 
@@ -47,6 +47,9 @@ getCategories()
   <h1>Select Question amount, level and category</h1>
   <h1>When ready Click button</h1>
   <button @click="goToQuestion">Go to Question</button>
+  <button @click="showAPI">Show questions</button>
+  <button @click="getQuestions">Apply the modifiers</button>
+
 
   <div class="backdrop">
     <form @submit.prevent="onSubmit" class="form">
