@@ -9,13 +9,17 @@
 <script setup>
 import { ref } from 'vue'
 import { apiUserRegister } from './Login/LoginAPI';
+import { useStore } from 'vuex';
 
-
-
-
+const store = useStore()
 //Initialize userinput
 const userName = ref("")
+const emit = defineEmits(["onLoginSuccess"])
 
+const onSuccess = user => {
+    store.commit("setUser", user)
+    emit("onLoginSuccess")
+}
 
 // const goToSelect = () => {
 //   router.push("/select");
@@ -27,7 +31,7 @@ const onSubmit = async () => {
     const [error, user] = await apiUserRegister(userName.value, 0)
     console.log("ERR", error)
     console.log("USER", user)
-    handleInputSuccess()
+    onSuccess(user)
 }
 
 

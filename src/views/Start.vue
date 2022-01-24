@@ -1,6 +1,6 @@
 <template>
     <div class="backdrop">
-        <UserInputForm />
+        <UserInputForm @onLoginSuccess="handleLoginSuccess"/>
         <Footer />
         
     </div>
@@ -13,7 +13,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const handleInputSuccess = () => {
+const handleLoginSuccess = () => {
     console.log("Input Done");
     router.push("/select");
 }
@@ -34,6 +34,8 @@ const handleInputSuccess = () => {
     min-height: 100%;
     max-height: 100%;
 }
-
+.footer {
+    margin-top: 18em;
+}
 
 </style>

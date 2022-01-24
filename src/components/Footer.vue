@@ -8,9 +8,7 @@
 </template>
 
 <style scoped>
-.footer {
-    margin-top: 18em;
-}
+
 .footer-content {
     background: rgba(0, 0, 0, 0.2);
     color: #ffffff;
