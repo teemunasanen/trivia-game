@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiGetQuestions } from '../components/Questions/QuestionAPI'
+import Footer from '../components/Footer.vue';
 
 const router = useRouter()
 let questions = reactive([])
@@ -78,12 +79,8 @@ const goToQuestion = () => {
     </form>
     <div class="instructions">
     <p>Adjust the settings and</p><p>click anywhere to start...</p></div>
-    <footer class="footer">
-      <div class="footer-content">
-        <span class="contributor">@JuliusHuttunen</span>
-        <span class="contributor">@teemunasanen</span>
-      </div>
-    </footer>
+    <Footer class="footer" />
+      
   </div>
 </template>
 
