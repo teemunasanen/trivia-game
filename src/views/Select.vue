@@ -74,7 +74,6 @@ getCategories()
           <span>Category</span>
         </p>
         <select v-model="category" class="categoryMenu" id="categoryMenu">
-          <option selected>Please choose a category</option>
           <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
         </select>
       </div>
@@ -133,6 +132,9 @@ getCategories()
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 1);
   border-radius: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 
 option {
