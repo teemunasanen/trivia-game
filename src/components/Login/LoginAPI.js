@@ -35,7 +35,7 @@ export async function apiUserRegister(username, score) {
                     "X-API-KEY": APIKEY
                 },
                 body: JSON.stringify(
-                    {
+                    { 
                         username,
                         score
                     }
@@ -53,6 +53,6 @@ export async function apiUserRegister(username, score) {
     else {
         console.log("Logged in as " + username)
         match = 0
-        return [null, username]
+        return [null, {name: username , score: 0}]
     }
 }
