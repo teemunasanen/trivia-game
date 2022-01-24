@@ -1,44 +1,60 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { apiGetQuestions } from '../components/Questions/QuestionAPI'
+import { apiGetQuestions, apiGetCategories } from '../components/Questions/QuestionAPI'
+
+const amount = ref("25")
+const difficulty = ref("1")
+const category = ref("9")
+
+const getCategories = async () => {
+  const apiCategories = await apiGetCategories()
+  console.log(apiCategories)
+  for (let category of apiCategories) {
+    categories.push(category)
+  }
+}
+
+const getQuestions = async () => {
+  console.log(category.value, amount.value, difficulty.value)
+  const apiQuestions = await apiGetQuestions(amount.value, category.value, difficulty.value)
+  console.log(apiQuestions)
+  for (let question of apiQuestions) {
+    questions.push(question)
+  }
+}
 
 const router = useRouter()
-let questions = reactive([])
+const questions = reactive([])
+const categories = reactive([])
 
-const showQuestion = async () => {
-  const apiQuestions = await apiGetQuestions(10, 11, "easy")
-  questions = apiQuestions[1]
+const showAPI = () => {
   console.log(questions)
+  console.log(categories)
 }
 
-const showQuestions = () => {
-  console.log(questions)
-}
-
-const goToQuestion = () => {
+const goToQuestion = async () => {
   router.push('/question')
+  
 }
+
+getQuestions()
+getCategories()
 
 </script>
 
 <template>
-  
-    <h1>Select Question amount, level and category</h1>
-    <h1>When ready Click button</h1>
-    <button @click="goToQuestion">Go to Question</button>
-    <button @click="showQuestion">Show available questions</button>
-    <button @click="showQuestions">Questions</button>
-    <ul>
-      <li v-for="object in questions" :key="object.difficulty">{{ questions }}</li>
-    </ul>
-  
+  <h1>Select Question amount, level and category</h1>
+  <h1>When ready Click button</h1>
+  <button @click="goToQuestion">Go to Question</button>
 
   <div class="backdrop">
     <form @submit.prevent="onSubmit" class="form">
       <div class="formElement">
         <label for="questionSlider" aria-label="amountSlider" class="selectLabel">Amount</label>
-        <p class="valueOfSelect"><span>Questions</span></p>
+        <p class="valueOfSelect">
+          <span>{{ amount }}</span>
+        </p>
         <input
           type="range"
           v-model="amount"
@@ -51,18 +67,20 @@ const goToQuestion = () => {
       </div>
       <div class="formElement">
         <label for="categoryMenu" aria-label="categoryMenu" class="selectLabel">Category</label>
-        <p class="valueOfSelect"><span>Questions</span></p>
+        <p class="valueOfSelect">
+          <span>Category</span>
+        </p>
         <select v-model="category" class="categoryMenu" id="categoryMenu">
-          <option  selected>Please choose a category</option>
+          <option selected>Please choose a category</option>
+          <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
         </select>
       </div>
       <div class="formElement">
         <label for="difficultySlider" aria-label="difficultySlider" class="selectLabel">Difficulty</label>
         <p class="valueOfSelect">
-          &lt;
-          <span>Easy</span>,
-          <span>Medium</span>,
-          <span>Hard</span>>
+          <span>Easy &nbsp&nbsp&nbsp</span>
+          <span>Medium &nbsp&nbsp&nbsp</span>
+          <span>Hard</span>
         </p>
         <input
           type="range"
@@ -72,12 +90,15 @@ const goToQuestion = () => {
           step="1"
           class="slider"
           id="difficultySlider"
+          name="difficultySlider"
         />
       </div>
       <!-- <button class="submit" type="submit">Confirm</button> -->
     </form>
     <div class="instructions">
-    <p>Adjust the settings and</p><p>click anywhere to start...</p></div>
+      <p>Adjust the settings and</p>
+      <p>click anywhere to start...</p>
+    </div>
     <footer class="footer">
       <div class="footer-content">
         <span class="contributor">@JuliusHuttunen</span>
@@ -101,7 +122,7 @@ const goToQuestion = () => {
   min-height: 100%;
   max-height: 100%;
 }
-.categoryMenu{
+.categoryMenu {
   margin-top: 40px;
   width: 300px;
   background-color: rgba(0, 90, 87, 1);
@@ -109,7 +130,6 @@ const goToQuestion = () => {
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 1);
   border-radius: 20px;
-
 }
 
 option {
@@ -126,8 +146,8 @@ option {
   background: rgba(255, 255, 255, 1);
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
   margin-top: 40px;
 }
 
@@ -153,7 +173,7 @@ option {
   cursor: pointer;
 }
 
-.valueOfSelect{
+.valueOfSelect {
   font-size: 1.7rem;
   color: rgba(255, 255, 255, 1);
 }
@@ -168,28 +188,27 @@ option {
   width: 70%;
   background-color: rgba(0, 112, 109, 1);
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   margin: auto;
 }
 .formElement {
   display: flex;
-  
+
   align-items: center;
   flex-direction: column;
-  
-  min-height: 200px;
 
+  min-height: 200px;
 }
-.instructions{
+.instructions {
   color: rgba(255, 255, 255, 1);
-   padding: 2em;
-   align-self: flex-end;
-   font-size: 2em;
-   width: 30%;
-   text-align: center;
-   
+  padding: 2em;
+  align-self: flex-end;
+  font-size: 2em;
+  width: 30%;
+  text-align: center;
+  font-style: italic;
 }
 
 .footer-content {
@@ -206,5 +225,4 @@ option {
   padding: 0.5em;
   font-size: 1.5em;
 }
-
 </style>
