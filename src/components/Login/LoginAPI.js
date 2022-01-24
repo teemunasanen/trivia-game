@@ -16,11 +16,6 @@ async function checkUsers(username) {
         for (let user of data) {
             if (user.username.toLowerCase() === username.toLowerCase()) {
                 match++
-                console.log("a match!")
-                console.log(user.username)
-            }
-            else {
-                null
             }
         }
         return [null, data]
@@ -48,6 +43,7 @@ export async function apiUserRegister(username, score) {
             }
             const response = await fetch(`${BASE_URL}`, config)
             const data = await response.json()
+            console.log("Created new user: " + username)
             return [null, data]
         }
         catch (error) {
@@ -57,5 +53,6 @@ export async function apiUserRegister(username, score) {
     else {
         console.log("Logged in as " + username)
         match = 0
+        return [null, username]
     }
 }
