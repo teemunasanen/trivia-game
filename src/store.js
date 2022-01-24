@@ -5,9 +5,9 @@ const store = createStore({
     user: {
       name: '',
       score:''
-    }
-
-
+    },
+    questions:[],
+    // answers
   },
 
   mutations: {
