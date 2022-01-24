@@ -7,8 +7,8 @@ const store = createStore({
       score: ''
     },
     questions: [],
+    // answers
   },
-
   mutations: {
     setUser: (state, user) => {
       state.user = user
