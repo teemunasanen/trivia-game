@@ -3,6 +3,7 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiGetQuestions, apiGetCategories } from '../components/Questions/QuestionAPI'
 import Footer from '../components/Footer.vue'
+import store from '../store';
 //Initialize basic parameters and their initial values
 const amount = ref("25")
 const difficulty = ref("1")
@@ -27,6 +28,11 @@ const getQuestions = async () => {
   for (let question of apiQuestions) {
     questions.push(question)
   }
+  storeQuestions(questions)
+}
+
+const storeQuestions = (questions) => {
+  store.commit("setQuestions", questions)
 }
 
 const showAPI = () => {
@@ -35,7 +41,7 @@ const showAPI = () => {
 
 const goToQuestion = async () => {
   router.push('/question')
-  
+
 }
 
 //Run on load:
@@ -50,7 +56,6 @@ getCategories()
   <button @click="goToQuestion">Go to Question</button>
   <button @click="showAPI">Show questions</button>
   <button @click="getQuestions">Apply the modifiers</button>
-
 
   <div class="backdrop">
     <form @submit.prevent="onSubmit" class="form">
@@ -75,7 +80,11 @@ getCategories()
           <span>Category</span>
         </p>
         <select v-model="category" class="categoryMenu" id="categoryMenu">
-          <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+          <option
+            v-for="category in categories"
+            :key="category.id"
+            :value="category.id"
+          >{{ category.name }}</option>
         </select>
       </div>
       <div class="formElement">
@@ -102,7 +111,7 @@ getCategories()
       <p>Adjust the settings and</p>
       <p>click anywhere to start...</p>
     </div>
-    <Footer class="footer"/>
+    <Footer class="footer" />
   </div>
 </template>
 
@@ -137,7 +146,6 @@ option {
   font-style: rgba(255, 255, 255, 1);
   border: none;
   border-radius: 20px;
-
 }
 
 .slider {

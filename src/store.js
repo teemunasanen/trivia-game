@@ -4,21 +4,23 @@ const store = createStore({
   state: {
     user: {
       name: '',
-      score:''
-    }
-
-
+      score: ''
+    },
+    questions: [],
   },
 
   mutations: {
     setUser: (state, user) => {
       state.user = user
+    },
+    setQuestions: (state, questions) => {
+      state.questions = questions
     }
 
   },
 
   actions: {
-    
+
   },
 });
 
