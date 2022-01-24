@@ -4,6 +4,9 @@
             <label for="username" aria-label="username" class="namelabel">INPUT YOUR NAME</label>
             <input v-model="userName" id="username" class="userinput" />
             <button class="submit" type="submit">Confirm</button>
+            <div v-if="show === true" class="loggedin">
+                <p>Logged in as {{ userName }}.</p>
+            </div>
         </form>
         <footer class="footer">
             <div class="footer-content">
@@ -20,18 +23,21 @@ import { apiUserRegister } from '../components/Login/LoginAPI';
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+let show = ref(false)
 
 const goToSelect = () => {
-  router.push("/select");
+    router.push("/select");
 };
 
 //Initialize userinput
 const userName = ref("")
 
 const onSubmit = async () => {
+    show.value = true
     const [error, user] = await apiUserRegister(userName.value, 0)
-    console.log("ERR", error)
-    console.log("USER", user)
+    show.value = false
+    //console.log("ERR", error)
+    //console.log("USER", user)
     goToSelect()
 }
 
@@ -98,10 +104,16 @@ const onSubmit = async () => {
     justify-content: center;
     flex-direction: column;
     align-items: flex-end;
-    padding: 1em
+    padding: 1em;
 }
 .contributor {
     padding: 0.5em;
     font-size: 1.5em;
+}
+
+.loggedin {
+    color: #ffffff;
+    font-size: 2em;
+    font-style: italic;
 }
 </style>

@@ -1,5 +1,6 @@
 import { BASE_URL } from "./"
 const APIKEY = "2621021822583701864026758372887704504265983508394583234625985500"
+//match checks if the input matches an existing username in API
 let match = 0
 
 async function checkUsers(username) {
@@ -13,17 +14,13 @@ async function checkUsers(username) {
         }
         const response = await fetch(`${BASE_URL}`, config)
         const data = await response.json()
+        //match++ if the input is already an username
         for (let user of data) {
             if (user.username.toLowerCase() === username.toLowerCase()) {
                 match++
-                console.log("a match!")
-                console.log(user.username)
-            }
-            else {
-                null
             }
         }
-        return [null, data]
+        return [null, username]
     }
     catch (error) {
         return [error.message, null]
@@ -48,6 +45,7 @@ export async function apiUserRegister(username, score) {
             }
             const response = await fetch(`${BASE_URL}`, config)
             const data = await response.json()
+            console.log("Created new user: " + username)
             return [null, data]
         }
         catch (error) {
@@ -57,5 +55,6 @@ export async function apiUserRegister(username, score) {
     else {
         console.log("Logged in as " + username)
         match = 0
+        return [null, username]
     }
 }
