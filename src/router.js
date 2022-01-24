@@ -4,7 +4,7 @@ const routes = [
   {
     name: "login",
     path: "/",
-    component: () => import("./views/UserInput.vue"),
+    component: () => import("./views/Start.vue"),
   },
   {
     name: 'select',
