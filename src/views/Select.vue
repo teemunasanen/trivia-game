@@ -21,6 +21,7 @@ const getCategories = async () => {
 
 //Get questions from API
 const getQuestions = async () => {
+  questions = []
   const apiQuestions = await apiGetQuestions(amount.value, category.value, difficulty.value)
   console.log(apiQuestions)
   for (let question of apiQuestions) {
