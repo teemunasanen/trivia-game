@@ -1,8 +1,9 @@
 <template>
 <footer class="footer">
             <div class="footer-content">
-                <span class="contributor">@JuliusHuttunen</span>
-                <span class="contributor">@teemunasanen</span>
+                <a href="https://github.com/JuliusHuttunen" target="_blank" class="contributor">@JuliusHuttunen</a>
+                <a href="https://github.com/JuliusHuttunen" target="_blank" class="contributor">@teemunasanen</a>
+               
             </div>
         </footer>
 </template>
@@ -23,4 +24,24 @@
     padding: 0.5em;
     font-size: 1.5em;
 }
+
+a:link {
+  color: #ffffff;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ffffff;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: yellow;
+  
+  
+}
+
+
 </style>
