@@ -3,8 +3,9 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiGetQuestions, apiGetCategories } from '../components/Questions/QuestionAPI'
 import Footer from '../components/Footer.vue'
-import store from '../store';
+import { useStore } from 'vuex';
 //Initialize basic parameters and their initial values
+const store = useStore()
 const amount = ref("25")
 const difficulty = ref("1")
 const category = ref("9")
@@ -41,7 +42,6 @@ const showAPI = () => {
 
 const goToQuestion = async () => {
   router.push('/question')
-
 }
 
 //Run on load:

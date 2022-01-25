@@ -2,7 +2,6 @@
     <div class="backdrop">
         <UserInputForm @onLoginSuccess="handleLoginSuccess"/>
         <Footer />
-        
     </div>
 </template>
 
