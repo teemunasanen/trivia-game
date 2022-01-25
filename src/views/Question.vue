@@ -14,6 +14,8 @@ const questionNumber = ref(0)
 const currentQuestion = reactive([])
 const answerOptions = reactive([])
 
+const answerArray = []
+
 const questions = computed(() => store.state.questions)
 const user = computed(() => store.state.user)
 const goToQuestion = () => {
@@ -33,13 +35,14 @@ const incrementIndex = () => {
 }
 
 const updateScore = async () => {
+  store.commit("setResults", answerArray)
   if (score.value > user.value.score) {
     console.log("Score was higher than the previous, update to API")
     const [error, apiuser] = await apiUpdateScore(user.value.id, score.value);
     store.commit("setUserScore", score.value)
+    store.commit("setHighScore", true)
     console.log("ERR", error);
     console.log("USER", apiuser);
-    
   }
   else {
     console.log("Score was lower than the previous")
@@ -73,6 +76,7 @@ function shuffle(array) {
 
 const handleAnswer = (value) => {
   let baseQuestion = questions.value[index - 1]
+  answerArray.push({"question": baseQuestion.question, "useranswer": value, "correctanswer" : baseQuestion.correct_answer})
   if (value === baseQuestion.correct_answer) {
     console.log("Correct!")
     score.value += 10

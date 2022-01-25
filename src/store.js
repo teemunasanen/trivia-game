@@ -8,6 +8,8 @@ const store = createStore({
     },
     questions: [],
     // answers
+    highScore: false,
+    results: []
   },
   mutations: {
     setUser: (state, user) => {
@@ -18,6 +20,12 @@ const store = createStore({
     },
     setQuestions: (state, questions) => {
       state.questions = questions
+    },
+    setHighScore: (state, highScore) => {
+      state.highScore = highScore
+    },
+    setResults: (state, answerArray) => {
+      state.results = answerArray
     }
 
   },
