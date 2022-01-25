@@ -2,12 +2,14 @@
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { computed, ref } from "vue";
+import { apiGetQuestions } from "../components/Questions/QuestionAPI";
 
 const router = useRouter()
 const store = useStore()
 
-const user = computed(() => store.state.user)
-const score = ref(user.value.score)
+const questionParams = computed(() => store.state.questionParams)
+const lastScore = computed(() => store.state.currentScore)
+const score = ref(lastScore.value)
 
 const isHighScore = computed(() => store.state.highScore)
 console.log(isHighScore.value)
@@ -16,11 +18,15 @@ const results = computed(() => store.state.results)
 console.log(results.value)
 
 
-const goToQuestion = () => {
+const goToQuestion = async() => {
+  const newQuestions = await apiGetQuestions(questionParams.value.amount, questionParams.value.category, questionParams.value.difficulty)
+  store.commit("setQuestions", newQuestions)
+  store.commit("setHighScore", false)
   router.push("/question");
 };
 
 const goToSelect = () => {
+  store.commit("setHighScore", false)
   router.push("/select");
 };
 
@@ -28,7 +34,7 @@ const goToSelect = () => {
 
 <template>
   <h1>Score: {{ score }}</h1>
-  <h1 v-if="isHighScore.value">New high score!</h1>
+  <h1 v-if="isHighScore">New high score!</h1>
   <table>
     <tr>
       <th>Question</th>

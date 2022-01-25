@@ -9,7 +9,14 @@ const store = createStore({
     questions: [],
     // answers
     highScore: false,
-    results: []
+    results: [],
+    questionParams: 
+    {
+      amount: '',
+      category: '',
+      difficulty: '',
+    },
+    currentScore: '',
   },
   mutations: {
     setUser: (state, user) => {
@@ -26,6 +33,12 @@ const store = createStore({
     },
     setResults: (state, answerArray) => {
       state.results = answerArray
+    },
+    setQuestionParams: (state, params) => {
+      state.questionParams = params
+    },
+    setCurrentScore: (state, score) => {
+      state.currentScore = score
     }
 
   },
