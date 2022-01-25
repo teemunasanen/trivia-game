@@ -20,7 +20,7 @@ body,
 html {
     margin: 0;
     padding: 0;
-    background-color: #FFD588;
+    background-color: rgba(18, 97, 138, 1);
     height: 100%;
     min-height: 100%;
     max-height: 100%;
