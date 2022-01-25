@@ -1,5 +1,7 @@
 <template>
+
   <div class="backdrop">
+    <Header />
     <div class="userformcontainer">
     <UserInputForm @onLoginSuccess="handleLoginSuccess" />
     </div>
@@ -11,6 +13,7 @@
 import UserInputForm from "../components/UserInputForm.vue";
 import Footer from "../components/Footer.vue";
 import { useRouter } from "vue-router";
+import Header from "../components/Header.vue";
 
 const router = useRouter();
 

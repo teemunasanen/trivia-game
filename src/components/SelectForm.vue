@@ -1,9 +1,7 @@
 <template>
-  <form @submit.prevent="onSubmit" class="form" >
+  <form @submit.prevent="onSubmit" class="form">
     <div class="formElement">
-      <label for="questionSlider" aria-label="amountSlider" class="selectLabel"
-        >Amount</label
-      >
+      <label for="questionSlider" aria-label="amountSlider" class="selectLabel">Amount</label>
       <p class="valueOfSelect">
         <span>{{ amount }}</span>
       </p>
@@ -19,9 +17,7 @@
       />
     </div>
     <div class="formElement">
-      <label for="categoryMenu" aria-label="categoryMenu" class="selectLabel"
-        >Category</label
-      >
+      <label for="categoryMenu" aria-label="categoryMenu" class="selectLabel">Category</label>
       <p class="valueOfSelect">
         <span>Category</span>
       </p>
@@ -30,19 +26,11 @@
           v-for="category in categories"
           :key="category.id"
           :value="category.id"
-          
-        >
-          {{ category.name }}
-        </option>
+        >{{ category.name }}</option>
       </select>
     </div>
     <div class="formElement">
-      <label
-        for="difficultySlider"
-        aria-label="difficultySlider"
-        class="selectLabel"
-        >Difficulty</label
-      >
+      <label for="difficultySlider" aria-label="difficultySlider" class="selectLabel">Difficulty</label>
       <p class="valueOfSelect">
         <span>Easy &nbsp&nbsp&nbsp</span>
         <span>Medium &nbsp&nbsp&nbsp</span>
@@ -60,7 +48,7 @@
         name="difficultySlider"
       />
     </div>
-    <button  @click="getQuestions" class="submit" type="submit">Confirm</button>
+    <button @click="getQuestions" class="submit" type="submit">Confirm</button>
   </form>
 </template>
 
@@ -71,7 +59,6 @@ import {
   apiGetCategories,
 } from "../components/Questions/QuestionAPI";
 import { computed } from "vue";
-
 import { useStore } from "vuex";
 
 const store = useStore();
@@ -79,7 +66,6 @@ const amount = ref("How many Questions?");
 const difficulty = ref("");
 const category = ref("");
 const questions = computed(() => store.state.questions)
-
 const categories = reactive([]);
 
 const emit = defineEmits(["onSelectSuccess"]);
@@ -99,7 +85,7 @@ const getCategories = async () => {
 
 //Get questions from API
 const getQuestions = async () => {
-  
+
   const apiQuestions = await apiGetQuestions(
     amount.value,
     category.value,
@@ -107,15 +93,14 @@ const getQuestions = async () => {
   );
   console.log(apiQuestions);
   onSuccess(apiQuestions);
-  
-};
 
+};
+// Check selects and if values are inserted -> get questions
 const checkSelects = () => {
-  console.log("checking selects")
   console.log(category.value, amount.value, difficulty.value)
 
 
-  if(amount.value!=="How many Questions?" && category.value !== "" && difficulty.value !==""){
+  if (amount.value !== "How many Questions?" && category.value !== "" && difficulty.value !== "") {
     getQuestions();
   }
 }
