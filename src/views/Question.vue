@@ -39,11 +39,11 @@ const incrementIndex = () => {
 const updateScore = async () => {
   store.commit("setResults", answerArray)
   if (score.value > user.value.score) {
-    console.log("Score was higher than the previous, update to API")
-    const [error, apiuser] = await apiUpdateScore(user.value.id, score.value);
     store.commit("setCurrentScore", score.value)
     store.commit("setUserScore", score.value)
     store.commit("setHighScore", true)
+    console.log("Score was higher than the previous, update to API")
+    const [error, apiuser] = await apiUpdateScore(user.value.id, score.value);
     console.log("ERR", error);
     console.log("USER", apiuser);
   }
