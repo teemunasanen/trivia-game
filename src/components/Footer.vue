@@ -2,7 +2,11 @@
 <footer class="footer">
             <div class="footer-content">
                 <a href="https://github.com/JuliusHuttunen" target="_blank" class="contributor">@JuliusHuttunen</a>
+<<<<<<< HEAD
                 <a href="https://github.com/teemunasanen" target="_blank" class="contributor">@teemunasanen</a>
+=======
+                <a href="https://github.com/JuliusHuttunen" target="_blank" class="contributor">@teemunasanen</a>
+>>>>>>> 03adea90820a093636ddbeb1093a4dedefd2d178
                
             </div>
         </footer>
