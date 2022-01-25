@@ -1,6 +1,8 @@
 <template>
   <div class="backdrop">
+    <div class="userformcontainer">
     <UserInputForm @onLoginSuccess="handleLoginSuccess" />
+    </div>
     <Footer />
   </div>
 </template>
@@ -20,17 +22,16 @@ const handleLoginSuccess = () => {
 
 <style scoped>
 .backdrop {
-  padding-top: 15em;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
   flex-direction: column;
   background-color: #30a178;
   font-family: "Roboto", sans-serif;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  height: 100vh
+}
+.userformcontainer{
+  padding-top: 10em;
 }
 .footer {
   margin-top: 18em;

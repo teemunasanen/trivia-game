@@ -1,10 +1,4 @@
 <template>
-  <h1>Select Question amount, level and category</h1>
-  <h1>When ready Click button</h1>
-  <button @click="goToQuestion">Go to Question</button>
-  <button @click="showAPI">Show questions</button>
-  <button @click="getQuestions">Apply the modifiers</button>
-
   <div class="backdrop">
     <SelectForm @onSelectSuccess="handleSelectSuccess" />
 
@@ -34,17 +28,13 @@ const handleSelectSuccess = () => {
 
 <style scoped>
 .backdrop {
-  padding-top: 15em;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
   flex-direction: column;
   background-color: rgba(0, 112, 109, 1);
   font-family: "Roboto", sans-serif;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  height: 100vh
 }
 
 .instructions {
