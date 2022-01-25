@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit" class="form">
+  <form @submit.prevent="onSubmit" class="form" >
     <div class="formElement">
       <label for="questionSlider" aria-label="amountSlider" class="selectLabel"
         >Amount</label
@@ -10,6 +10,7 @@
       <input
         type="range"
         v-model="amount"
+        @blur="checkSelects"
         min="1"
         max="50"
         step="1"
@@ -24,11 +25,12 @@
       <p class="valueOfSelect">
         <span>Category</span>
       </p>
-      <select v-model="category" class="categoryMenu" id="categoryMenu">
+      <select v-model="category" @blur="checkSelects" class="categoryMenu" id="categoryMenu">
         <option
           v-for="category in categories"
           :key="category.id"
           :value="category.id"
+          
         >
           {{ category.name }}
         </option>
@@ -49,6 +51,7 @@
       <input
         type="range"
         v-model="difficulty"
+        @blur="checkSelects"
         min="0"
         max="2"
         step="1"
@@ -72,9 +75,9 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const amount = ref("25");
-const difficulty = ref("1");
-const category = ref("9");
+const amount = ref("How many Questions?");
+const difficulty = ref("");
+const category = ref("");
 const questions = computed(() => store.state.questions)
 
 const categories = reactive([]);
@@ -106,6 +109,16 @@ const getQuestions = async () => {
   onSuccess(apiQuestions);
   
 };
+
+const checkSelects = () => {
+  console.log("checking selects")
+  console.log(category.value, amount.value, difficulty.value)
+
+
+  if(amount.value!=="How many Questions?" && category.value !== "" && difficulty.value !==""){
+    getQuestions();
+  }
+}
 
 const showAPI = () => {
   console.log(questions);
