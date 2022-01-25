@@ -92,7 +92,7 @@ incrementIndex()
 .backdrop {
   display: flex;
   align-items: stretch;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   background-color: #00404D;
   font-family: "Roboto", sans-serif;

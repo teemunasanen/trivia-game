@@ -20,17 +20,13 @@ const handleLoginSuccess = () => {
 
 <style scoped>
 .backdrop {
-  padding-top: 15em;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
   flex-direction: column;
   background-color: #30a178;
   font-family: "Roboto", sans-serif;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  height: 100vh
 }
 .footer {
   margin-top: 18em;

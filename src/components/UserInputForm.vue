@@ -46,6 +46,7 @@ const onSubmit = async () => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #30a178;
 }
 .submit {
   display: flex;
