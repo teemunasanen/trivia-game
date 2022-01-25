@@ -37,6 +37,6 @@ const handleLoginSuccess = () => {
   padding-top: 10em;
 }
 .footer {
-  margin-top: 18em;
+  margin-top: 10em;
 }
 </style>

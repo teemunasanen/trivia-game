@@ -6,7 +6,6 @@
 
 <style scoped>
 .headerContainer{
-    padding: 20px;
     font-size: xx-large; 
       
 }
