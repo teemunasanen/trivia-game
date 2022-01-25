@@ -16,9 +16,9 @@ async function checkUsers(username) {
         for (let user of data) {
             if (user.username.toLowerCase() === username.toLowerCase()) {
                 match++
+                return [null, user]
             }
         }
-        return [null, data]
     }
     catch (error) {
         return [error.message, null]
@@ -35,7 +35,7 @@ export async function apiUserRegister(username, score) {
                     "X-API-KEY": APIKEY
                 },
                 body: JSON.stringify(
-                    { 
+                    {
                         username,
                         score
                     }
@@ -53,6 +53,31 @@ export async function apiUserRegister(username, score) {
     else {
         console.log("Logged in as " + username)
         match = 0
-        return [null, {name: username , score: 0}]
+        return checkUsers(username)
     }
+}
+
+export async function apiUpdateScore(id, score) {
+    try {
+        const config = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "X-API-KEY": APIKEY
+            },
+            body: JSON.stringify(
+                {
+                    score: score
+                }
+            )
+        }
+        const response = await fetch(`${BASE_URL}/${id}`, config)
+        const data = await response.json()
+        console.log("Updated score")
+        return [null, data]
+    }
+    catch(error) {
+        return [error.message, null]
+    }
+
 }

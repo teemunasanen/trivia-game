@@ -48,7 +48,10 @@
         name="difficultySlider"
       />
     </div>
+<<<<<<< HEAD
     <button @click="getQuestions" class="submit" type="submit">Confirm</button>
+=======
+>>>>>>> 9db5c813586d1f360518fdf21efe5e7c754bfbb2
   </form>
 </template>
 
