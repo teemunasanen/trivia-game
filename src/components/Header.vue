@@ -10,5 +10,6 @@
     font-size: xx-large;
     display: flex;
     align-self: center;
+   
 }
 </style>

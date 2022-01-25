@@ -31,5 +31,12 @@ const handleLoginSuccess = () => {
   background-color: #30a178;
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
+  
+}
+.userformcontainer{
+  padding-top: 10em;
+}
+.footer {
+  margin-top: 10em;
 }
 </style>
