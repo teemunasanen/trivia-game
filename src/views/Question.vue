@@ -79,7 +79,7 @@ function shuffle(array) {
 
 const handleAnswer = (value) => {
   let baseQuestion = questions.value[index - 1]
-  answerArray.push({"question": baseQuestion.question, "useranswer": value, "correctanswer" : baseQuestion.correct_answer})
+  answerArray.push({ "question": baseQuestion.question, "useranswer": value, "correctanswer": baseQuestion.correct_answer })
   if (value === baseQuestion.correct_answer) {
     console.log("Correct!")
     score.value += 10
@@ -121,7 +121,7 @@ incrementIndex()
   flex-direction: column;
   background-color: #00404d;
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .questionnumber {

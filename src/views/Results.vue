@@ -69,7 +69,7 @@ const goToSelect = () => {
   flex-direction: column;
   background-color: rgba(18, 97, 138, 1);
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  min-height: 100vh
 }
 
 .resultsContainer{
