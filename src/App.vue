@@ -7,11 +7,13 @@
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
 * {
   margin: 0;
   padding: 0;
 }
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
