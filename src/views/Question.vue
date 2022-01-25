@@ -2,6 +2,7 @@
 import { useRouter } from "vue-router";
 import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
+import { apiUpdateScore } from "../components/Login/LoginAPI";
 import Footer from "../components/Footer.vue";
 
 const store = useStore()
@@ -14,6 +15,7 @@ const currentQuestion = reactive([])
 const answerOptions = reactive([])
 
 const questions = computed(() => store.state.questions)
+const user = computed(() => store.state.user)
 const goToQuestion = () => {
   router.push("/results");
 };
@@ -25,7 +27,23 @@ const incrementIndex = () => {
     questionNumber.value++
   }
   else {
+    updateScore()
     goToQuestion()
+  }
+}
+
+const updateScore = async () => {
+  if (score.value > user.value.score) {
+    console.log("Score was higher than the previous, update to API")
+    const [error, apiuser] = await apiUpdateScore(user.value.id, score.value);
+    store.commit("setUserScore", score.value)
+    console.log("ERR", error);
+    console.log("USER", apiuser);
+    
+  }
+  else {
+    console.log("Score was lower than the previous")
+    store.commit("setUserScore", score.value)
   }
 }
 
@@ -73,18 +91,18 @@ incrementIndex()
 <template>
   <div class="backdrop">
     <div class="scorecontainerparent">
-    <div class="scorecontainer">
-    <span class="score">Score: {{score}}</span>
-    </div>
+      <div class="scorecontainer">
+        <span class="score">Score: {{ score }}</span>
+      </div>
     </div>
     <span class="questionnumber">{{ questionNumber }}/{{ questions.length }}</span>
     <div v-for="question in currentQuestion" v-html="question" class="question"></div>
     <div class="answer">
-    <div v-for="answer in shuffle(answerOptions.flat())" class="answercontainer">
-      <button @click="handleAnswer(answer)" class="answeroption" v-html="answer"></button>
+      <div v-for="answer in shuffle(answerOptions.flat())" class="answercontainer">
+        <button @click="handleAnswer(answer)" class="answeroption" v-html="answer"></button>
+      </div>
     </div>
-    </div>
-  <Footer class="footer"/>
+    <Footer class="footer" />
   </div>
 </template>
 
@@ -94,7 +112,7 @@ incrementIndex()
   align-items: stretch;
   justify-content: space-between;
   flex-direction: column;
-  background-color: #00404D;
+  background-color: #00404d;
   font-family: "Roboto", sans-serif;
   height: 100vh;
 }
@@ -102,19 +120,19 @@ incrementIndex()
 .questionnumber {
   padding-top: 2em;
   font-size: 2em;
-  color: #FFD588;
+  color: #ffd588;
   font-style: italic;
 }
 .question {
   padding-top: 1em;
   font-size: 3em;
-  color: #FFD588;
+  color: #ffd588;
   max-width: 100%;
   padding-left: 3em;
   padding-right: 3em;
 }
 
-.scorecontainerparent{
+.scorecontainerparent {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -137,7 +155,6 @@ incrementIndex()
 .answercontainer {
   display: grid;
   grid-template-columns: 1fr 50px 1fr 1fr;
-
 }
 
 .answeroption {
@@ -158,4 +175,5 @@ incrementIndex()
 .contributor {
   padding: 0.5em;
   font-size: 1.5em;
-}</style>
+}
+</style>

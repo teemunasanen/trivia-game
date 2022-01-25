@@ -13,6 +13,9 @@ const store = createStore({
     setUser: (state, user) => {
       state.user = user
     },
+    setUserScore: (state, score) => {
+      state.user.score = score
+    },
     setQuestions: (state, questions) => {
       state.questions = questions
     }

@@ -60,7 +60,6 @@
         name="difficultySlider"
       />
     </div>
-    <button  @click="getQuestions" class="submit" type="submit">Confirm</button>
   </form>
 </template>
 
