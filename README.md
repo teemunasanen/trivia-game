@@ -10,7 +10,6 @@ TODO: Fill out this long description.
 
 - [Install](#install)
 - [Usage](#usage)
-- [API](#api)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
@@ -25,23 +24,30 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 ## Install
 
-```
+Clone repository to local directory, navigate to project root and install.
+
+```git clone https://github.com/teemunasanen/trivia-game.git
+   cd trivia-game
+   npm install
 ```
 
 ## Usage
 
-```
-```
+The app is deployed at [Heroku.](https://trivia-game-vue3.herokuapp.com/)
 
-## API
+For local installation, run this npm command in project root:
+
+```
+npm run dev
+```
 
 ## Maintainers
-[@JuliusHuttunen](https://github.com/https://github.com/JuliusHuttunen)
-[@teemunasanen](https://github.com/https://github.com/teemunasanen)
+[@JuliusHuttunen](https://github.com/JuliusHuttunen)
+[@teemunasanen](https://github.com/teemunasanen)
 
 ## Contributing
-[@JuliusHuttunen](https://github.com/https://github.com/JuliusHuttunen)
-[@teemunasanen](https://github.com/https://github.com/teemunasanen)
+[@JuliusHuttunen](https://github.com/JuliusHuttunen)
+[@teemunasanen](https://github.com/teemunasanen)
 
 
 
