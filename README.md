@@ -24,6 +24,7 @@ Clone repository to local directory, navigate to project root and install.
 ```git clone https://github.com/teemunasanen/trivia-game.git
    cd trivia-game
    npm install
+   
 ```
 
 ## Usage
@@ -33,6 +34,7 @@ The app is deployed at [Heroku.](https://trivia-game-vue3.herokuapp.com/)
 For local installation, run this npm command in project root:
 
 ```npm run dev
+
 ```
 
 ## Components
