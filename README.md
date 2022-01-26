@@ -21,7 +21,8 @@ This project was programmed for the Noroff Full Stack Bootcamp. It was the main 
 
 Clone repository to local directory, navigate to project root and install.
 
-```git clone https://github.com/teemunasanen/trivia-game.git
+```
+   git clone https://github.com/teemunasanen/trivia-game.git
    cd trivia-game
    npm install
    
@@ -33,7 +34,8 @@ The app is deployed at [Heroku.](https://trivia-game-vue3.herokuapp.com/)
 
 For local installation, run this npm command in project root:
 
-```npm run dev
+```
+   npm run dev
 
 ```
 
