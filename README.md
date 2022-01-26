@@ -37,12 +37,12 @@ For local installation, run this npm command in project root:
 
 ## Components
 
-![Component tree](./img/component-tree.png)
+![Component tree](./img/Component%20Tree.png)
 
 
 ## UI Concept
 
-![Screens](./img/screens.png)
+![Screens](./img/Screens.png)
 
 
 ## Maintainers
