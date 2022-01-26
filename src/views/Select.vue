@@ -33,7 +33,7 @@ const handleSelectSuccess = () => {
   flex-direction: column;
   background-color: rgba(0, 112, 109, 1);
   font-family: "Roboto", sans-serif;
-  height: 100vh
+  min-height: 100vh;
 }
 
 .instructions {

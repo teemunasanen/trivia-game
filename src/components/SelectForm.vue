@@ -68,7 +68,7 @@ const categories = reactive([]);
 const emit = defineEmits(["onSelectSuccess"]);
 
 const onSuccess = (questions) => {
-  store.commit("setQuestionParams", {amount: amount.value, category: category.value, difficulty: difficulty.value})
+  store.commit("setQuestionParams", { amount: amount.value, category: category.value, difficulty: difficulty.value })
   store.commit("setQuestions", questions);
   emit("onSelectSuccess");
 };
@@ -118,13 +118,17 @@ getCategories();
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-align: center;
+  transition: background-color 1s;
 }
-
+.categoryMenu:hover {
+  background-color: #004369;
+}
 option {
   font-style: rgba(255, 255, 255, 1);
   border: none;
   border-radius: 20px;
 }
+
 
 .slider {
   -webkit-appearance: none;

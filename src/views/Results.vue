@@ -68,11 +68,12 @@ const goToSelect = () => {
   flex-direction: column;
   background-color: rgba(18, 97, 138, 1);
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  min-height: 100vh
 }
 
 .resultsContainer{
   color: rgba(255, 255, 255, 1);
+  margin-top: 30px;
 }
 .highScore{
   font-size: xx-large;
@@ -92,6 +93,12 @@ button{
   border-radius: 8px;
   background-color: rgba(14, 78, 110, 1);
   border: none;
+  transition: background-color 1s;
+}
+
+button:hover{
+  background-color: rgba(255, 213, 136, 1);
+  color: rgba(14, 78, 110, 1);
 }
 .tableContainer{
   margin: auto;

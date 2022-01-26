@@ -81,7 +81,7 @@ function shuffle(array) {
 //Handle user answer
 const handleAnswer = (value) => {
   let baseQuestion = questions.value[index - 1]
-  answerArray.push({"question": baseQuestion.question, "useranswer": value, "correctanswer" : baseQuestion.correct_answer})
+  answerArray.push({ "question": baseQuestion.question, "useranswer": value, "correctanswer": baseQuestion.correct_answer })
   if (value === baseQuestion.correct_answer) {
     score.value += 10
     incrementIndex()
@@ -122,7 +122,7 @@ incrementIndex()
   flex-direction: column;
   background-color: #00404d;
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .questionnumber {
@@ -178,6 +178,10 @@ incrementIndex()
   padding: 10px;
   grid-column-start: 2;
   grid-column-end: 4;
+  transition: background-color 1s;
+}
+.answeroption:hover {
+  background-color: #004369;
 }
 
 .contributor {

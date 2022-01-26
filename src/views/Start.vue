@@ -1,9 +1,8 @@
 <template>
-
   <div class="backdrop">
     <Header />
     <div class="userformcontainer">
-    <UserInputForm @onLoginSuccess="handleLoginSuccess" />
+      <UserInputForm @onLoginSuccess="handleLoginSuccess" />
     </div>
     <Footer />
   </div>
@@ -30,7 +29,8 @@ const handleLoginSuccess = () => {
   flex-direction: column;
   background-color: #30a178;
   font-family: "Roboto", sans-serif;
-  height: 100vh
+  min-height: 100vh;
+  
 }
 .userformcontainer{
   padding-top: 10em;

@@ -3,12 +3,18 @@
 </script>
 
 <template>
-<router-view />
-  
+  <router-view />
 </template>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,8 +22,11 @@
   text-align: center;
   color: #2c3e50;
 }
-body,
+body {
+  min-height: 100%;
+}
 html {
+  height: 100%;
     margin: 0;
     padding: 0;
     background-color: rgba(18, 97, 138, 1);

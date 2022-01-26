@@ -1,12 +1,15 @@
 <template>
-<div class="headerContainer">
- <h1>🔴🟠🟡 TRIVIA-GAME 🟡🟠🔴</h1>
-</div>
+    <div class="headerContainer">
+        <h1>🔴🟠🟡 TRIVIA-GAME 🟡🟠🔴</h1>
+    </div>
 </template>
 
 <style scoped>
-.headerContainer{
-    font-size: xx-large; 
-      
+.headerContainer {
+    margin-top: 3%;
+    font-size: xx-large;
+    display: flex;
+    align-self: center;
+   
 }
 </style>
