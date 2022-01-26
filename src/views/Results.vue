@@ -13,12 +13,10 @@ const lastScore = computed(() => store.state.currentScore)
 const score = ref(lastScore.value)
 
 const isHighScore = computed(() => store.state.highScore)
-console.log(isHighScore.value)
 
 const results = computed(() => store.state.results)
-console.log(results.value)
 
-
+//Start again with the original question params
 const goToQuestion = async() => {
   const newQuestions = await apiGetQuestions(questionParams.value.amount, questionParams.value.category, questionParams.value.difficulty)
   store.commit("setQuestions", newQuestions)
@@ -26,6 +24,7 @@ const goToQuestion = async() => {
   router.push("/question");
 };
 
+//Go back to selection
 const goToSelect = () => {
   store.commit("setHighScore", false)
   router.push("/select");

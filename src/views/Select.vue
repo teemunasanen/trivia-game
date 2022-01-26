@@ -19,7 +19,6 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const handleSelectSuccess = () => {
-  console.log("Selects Done");
   router.push("/question");
 };
 </script>

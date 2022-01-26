@@ -11,12 +11,12 @@ const score = ref(0)
 let index = 0
 const questionNumber = ref(0)
 
+//Initialize the question that will be shown and the answer options
 const currentQuestion = reactive([])
 const answerOptions = reactive([])
 
+//Initialize the "results" array
 const answerArray = []
-
-
 
 const questions = computed(() => store.state.questions)
 const user = computed(() => store.state.user)
@@ -24,6 +24,7 @@ const goToQuestion = () => {
   router.push("/results");
 };
 
+//Increment questions index
 const incrementIndex = () => {
   index++
   if (index <= questions.value.length) {
@@ -36,6 +37,7 @@ const incrementIndex = () => {
   }
 }
 
+//Update user score after all the questions are answered. Patch API if higher than the API's score.
 const updateScore = async () => {
   store.commit("setResults", answerArray)
   if (score.value > user.value.score) {
@@ -48,11 +50,11 @@ const updateScore = async () => {
     console.log("USER", apiuser);
   }
   else {
-    console.log("Score was lower than the previous")
     store.commit("setCurrentScore", score.value)
   }
 }
 
+//Use arrays to display the correct question with its answer options
 const iterateQuestions = (index) => {
   let baseQuestion = questions.value[index - 1]
   while (answerOptions.length > 0) {
@@ -62,10 +64,9 @@ const iterateQuestions = (index) => {
   answerOptions.push(baseQuestion.incorrect_answers)
   currentQuestion.pop()
   currentQuestion.push(baseQuestion.question)
-  console.log(currentQuestion)
-  console.log(answerOptions)
 }
 
+//Shuffle answer options
 function shuffle(array) {
   let currentIndex = array.length, randomIndex;
   while (currentIndex != 1) {
@@ -77,20 +78,20 @@ function shuffle(array) {
   return array;
 }
 
+//Handle user answer
 const handleAnswer = (value) => {
   let baseQuestion = questions.value[index - 1]
   answerArray.push({"question": baseQuestion.question, "useranswer": value, "correctanswer" : baseQuestion.correct_answer})
   if (value === baseQuestion.correct_answer) {
-    console.log("Correct!")
     score.value += 10
     incrementIndex()
   }
   else {
-    console.log("Wrong!")
     incrementIndex()
   }
 }
 
+//Run on start
 incrementIndex()
 
 </script>

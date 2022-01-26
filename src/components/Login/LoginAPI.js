@@ -13,7 +13,9 @@ async function checkUsers(username) {
         }
         const response = await fetch(`${BASE_URL}`, config)
         const data = await response.json()
+        //Loop through the users
         for (let user of data) {
+            //If username matches with any in the database, increment match value
             if (user.username.toLowerCase() === username.toLowerCase()) {
                 match++
                 return [null, user]
@@ -25,6 +27,7 @@ async function checkUsers(username) {
     }
 }
 export async function apiUserRegister(username, score) {
+    //Check username for duplicate
     await checkUsers(username)
     if (match == 0) {
         try {
@@ -43,7 +46,6 @@ export async function apiUserRegister(username, score) {
             }
             const response = await fetch(`${BASE_URL}`, config)
             const data = await response.json()
-            console.log("Created new user: " + username)
             return [null, data]
         }
         catch (error) {
@@ -51,7 +53,6 @@ export async function apiUserRegister(username, score) {
         }
     }
     else {
-        console.log("Logged in as " + username)
         match = 0
         return checkUsers(username)
     }
@@ -73,7 +74,6 @@ export async function apiUpdateScore(id, score) {
         }
         const response = await fetch(`${BASE_URL}/${id}`, config)
         const data = await response.json()
-        console.log("Updated score")
         return [null, data]
     }
     catch(error) {

@@ -18,7 +18,6 @@ import Header from "../components/Header.vue";
 const router = useRouter();
 
 const handleLoginSuccess = () => {
-  console.log("Input Done");
   router.push("/select");
 };
 </script>

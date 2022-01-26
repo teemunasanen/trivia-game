@@ -57,14 +57,12 @@ import {
   apiGetQuestions,
   apiGetCategories,
 } from "../components/Questions/QuestionAPI";
-import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 const amount = ref("How many Questions?");
 const difficulty = ref("");
 const category = ref("");
-const questions = computed(() => store.state.questions)
 const categories = reactive([]);
 
 const emit = defineEmits(["onSelectSuccess"]);
@@ -91,13 +89,11 @@ const getQuestions = async () => {
     category.value,
     difficulty.value
   );
-  console.log(apiQuestions);
   onSuccess(apiQuestions);
 
 };
 // Check selects and if values are inserted -> get questions
 const checkSelects = () => {
-  console.log(category.value, amount.value, difficulty.value)
 
 
   if (amount.value !== "How many Questions?" && category.value !== "" && difficulty.value !== "") {
@@ -105,17 +101,9 @@ const checkSelects = () => {
   }
 }
 
-const showAPI = () => {
-  console.log(questions);
-};
-
-const goToQuestion = async () => {
-  router.push("/question");
-};
-
 //Run on load:
-
 getCategories();
+
 </script>
 
 <style>
