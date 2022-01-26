@@ -36,7 +36,7 @@ const goToSelect = () => {
 <div class="backdrop">
   <div class="resultsContainer">
   <h1>Score: {{ score }}</h1>
-  <h1 v-if="isHighScore.value" class="highScore">New high score!</h1>
+  <h1 v-if="isHighScore" class="highScore">New high score!</h1>
   <div class="tableContainer">
   <table class="resultsTable">
     <tr class="headerRow">
