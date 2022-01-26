@@ -37,7 +37,7 @@ For local installation, run this npm command in project root:
 
 ## Components
 
-![Component tree](./img/component tree.png)
+![Component tree](./img/component-tree.png)
 
 
 ## UI Concept
