@@ -11,7 +11,7 @@ This project was programmed for the Noroff Full Stack Bootcamp. It was the main 
 - [Install](#install)
 - [Usage](#usage)
 - [Component tree](#components)
-- [UI concept](#ui concept)
+- [UI concept](#ui-concept)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
@@ -37,10 +37,12 @@ For local installation, run this npm command in project root:
 
 ## Components
 
+![Component tree](./img/component tree.png)
 
 
 ## UI Concept
 
+![Screens](./img/screens.png)
 
 
 ## Maintainers
