@@ -177,6 +177,10 @@ incrementIndex()
   padding: 10px;
   grid-column-start: 2;
   grid-column-end: 4;
+  transition: background-color 1s;
+}
+.answeroption:hover {
+  background-color: #004369;
 }
 
 .contributor {

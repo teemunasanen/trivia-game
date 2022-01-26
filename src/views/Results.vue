@@ -74,6 +74,7 @@ const goToSelect = () => {
 
 .resultsContainer{
   color: rgba(255, 255, 255, 1);
+  margin-top: 30px;
 }
 .highScore{
   font-size: xx-large;
@@ -93,6 +94,12 @@ button{
   border-radius: 8px;
   background-color: rgba(14, 78, 110, 1);
   border: none;
+  transition: background-color 1s;
+}
+
+button:hover{
+  background-color: rgba(255, 213, 136, 1);
+  color: rgba(14, 78, 110, 1);
 }
 .tableContainer{
   margin: auto;

@@ -4,7 +4,7 @@
       >INPUT YOUR NAME</label
     >
     <input v-model="userName" id="username" class="userinput" />
-    <button class="submit" type="submit">Confirm</button>
+    <button class="submitButton" type="submit">Confirm</button>
   </form>
 </template>
 
@@ -48,7 +48,7 @@ const onSubmit = async () => {
   flex-direction: column;
   background-color: #30a178;
 }
-.submit {
+.submitButton {
   display: flex;
   background: rgba(0, 0, 0, 0.2);
   border: none;
@@ -60,6 +60,11 @@ const onSubmit = async () => {
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
+  transition: background-color 1s;
+}
+
+.submitButton:hover {
+  background-color: #004369;
 }
 .userinput {
   background: rgba(0, 0, 0, 0.2);
@@ -72,5 +77,10 @@ const onSubmit = async () => {
   font-family: "Roboto", sans-serif;
   width: 80%;
   height: 3rem;
+  transition: background-color 1s;
 }
+.userinput:hover {
+  background-color: #004369;
+}
+
 </style>
